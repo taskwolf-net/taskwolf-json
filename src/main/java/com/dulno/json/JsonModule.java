@@ -1,5 +1,8 @@
 package com.dulno.json;
 
+import com.dulno.json.action.array.JsonReadArrayAction;
+import com.dulno.json.action.array.index.JsonReadArrayIndexAction;
+import com.dulno.json.action.value.JsonReadValueAction;
 import com.google.inject.Injector;
 import com.dulno.core.account.AccountLink;
 import com.dulno.core.action.ActionRepository;
@@ -40,7 +43,7 @@ public final class JsonModule extends Module {
   @Override
   public ModuleInformation moduleInformation() {
     return ModuleInformation.create("JSON", "", "json.webp",
-      ModuleInformation.Type.PUBLIC);
+      ModuleInformation.Type.PUBLIC, ModuleInformation.Novelty.NEW);
   }
 
   @Override
@@ -48,6 +51,12 @@ public final class JsonModule extends Module {
     var databaseConnection = injector().getInstance(DatabaseConnection.class);
     var databaseKeyspace = injector().getInstance(DatabaseKeyspace.class);
     var repository = ActionRepository.create();
+    repository.registerAction(JsonReadValueAction.create(databaseConnection,
+      databaseKeyspace));
+    repository.registerAction(JsonReadArrayAction.create(databaseConnection,
+      databaseKeyspace));
+    repository.registerAction(JsonReadArrayIndexAction.create(databaseConnection,
+      databaseKeyspace));
     return repository;
   }
 }

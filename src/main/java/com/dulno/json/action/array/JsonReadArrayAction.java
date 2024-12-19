@@ -4,11 +4,10 @@ import com.dulno.core.action.Action;
 import com.dulno.core.action.ActionContentDatabaseTable;
 import com.dulno.core.action.ActionInformation;
 import com.dulno.core.database.*;
-import com.dulno.core.workflow.component.ComponentNovelty;
 import com.dulno.core.workflow.component.input.InputComponentDataType;
 import com.dulno.core.workflow.component.input.InputComponentVariable;
-import com.dulno.core.workflow.component.output.OutputComponentVariable;
 import com.dulno.core.workflow.component.output.ListOutputComponentVariable;
+import com.dulno.core.workflow.component.output.OutputComponentVariable;
 import com.google.common.collect.Lists;
 import lombok.AllArgsConstructor;
 
@@ -45,16 +44,15 @@ public final class JsonReadArrayAction implements Action<JsonReadArrayActionExec
       .withInputVariable(InputComponentVariable.createRequired("json.action.read.array.input.content.name",
         "jsonContent", "json.action.read.array.input.content.description", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createOptional("json.action.read.array.input.path.name",
-        "jsonPath", "json.action.read.array.input.path.description", InputComponentDataType.TEXT))
+        "jsonPath", "json.action.read.array.input.path.description", "first.second.third", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createOptional("json.action.read.array.input.separator.name",
-        "jsonSeparator", "json.action.read.array.input.separator.description", InputComponentDataType.TEXT))
+        "jsonSeparator", "json.action.read.array.input.separator.description", ".", InputComponentDataType.TEXT))
       .withOutputVariable(ListOutputComponentVariable.create("json.action.read.array.output.array", "jsonArray",
         OutputComponentVariable.create("json.action.read.array.output.array.entry", "jsonArrayEntry")))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.output.array.length", "jsonArrayLength"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.output.content", "jsonContent"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.output.path", "jsonPath"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.output.separator", "jsonSeparator"))
-      .withNovelty(ComponentNovelty.NEW)
       .build();
   }
 

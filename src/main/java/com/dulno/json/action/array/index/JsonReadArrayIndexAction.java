@@ -4,7 +4,6 @@ import com.dulno.core.action.Action;
 import com.dulno.core.action.ActionContentDatabaseTable;
 import com.dulno.core.action.ActionInformation;
 import com.dulno.core.database.*;
-import com.dulno.core.workflow.component.ComponentNovelty;
 import com.dulno.core.workflow.component.input.InputComponentDataType;
 import com.dulno.core.workflow.component.input.InputComponentVariable;
 import com.dulno.core.workflow.component.output.OutputComponentVariable;
@@ -47,7 +46,7 @@ public final class JsonReadArrayIndexAction implements Action<JsonReadArrayIndex
       .withInputVariable(InputComponentVariable.createOptional("json.action.read.array.index.input.path.name",
         "jsonPath", "json.action.read.array.index.input.path.description", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createOptional("json.action.read.array.index.input.separator.name",
-        "jsonSeparator", "json.action.read.array.index.input.separator.description", InputComponentDataType.TEXT))
+        "jsonSeparator", "json.action.read.array.index.input.separator.description", ".", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createRequired("json.action.read.array.index.input.index.name",
         "jsonIndex", "json.action.read.array.index.input.index.description", InputComponentDataType.TEXT))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.index.output.array.entry", "jsonArrayEntry"))
@@ -55,7 +54,6 @@ public final class JsonReadArrayIndexAction implements Action<JsonReadArrayIndex
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.index.output.path", "jsonPath"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.index.output.separator", "jsonSeparator"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.array.index.output.index", "jsonIndex"))
-      .withNovelty(ComponentNovelty.NEW)
       .build();
   }
 

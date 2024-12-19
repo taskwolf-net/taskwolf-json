@@ -10,6 +10,7 @@ import org.json.JSONObject;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Pattern;
 
 @AllArgsConstructor(staticName = "create")
 public final class JsonReadValueActionExecutor implements ActionExecutor {
@@ -32,8 +33,7 @@ public final class JsonReadValueActionExecutor implements ActionExecutor {
   private ActionResult findValue() {
     try {
       var json = new JSONObject(content);
-      var parts = path.contains(separator) ? path.split(separator) :
-        new String[] {path};
+      var parts = path.split(Pattern.quote(separator));
       var end = traceJsonPath(json, parts);
       if (end.isEmpty()) {
         return ActionResult.failure("json.action.read.value.failure.not.found");

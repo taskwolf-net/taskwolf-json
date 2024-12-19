@@ -11,6 +11,7 @@ import org.json.JSONObject;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
+import java.util.regex.Pattern;
 
 @AllArgsConstructor(staticName = "create")
 public final class JsonReadArrayIndexActionExecutor implements ActionExecutor {
@@ -36,17 +37,16 @@ public final class JsonReadArrayIndexActionExecutor implements ActionExecutor {
     try {
       var index = Integer.parseInt(this.index);
       if (path.isEmpty()) {
-        return ActionResult.success(buildInformation(new JSONArray(content), index));
+        return buildResult(new JSONArray(content), index);
       }
       var json = new JSONObject(content);
-      var parts = path.contains(separator) ? path.split(separator) :
-        new String[] {path};
+      var parts = path.split(Pattern.quote(separator));
       var end = traceJsonPath(json, parts);
       if (end.isEmpty()) {
         return ActionResult.failure("json.action.read.array.index.failure.not.found");
       }
       var array = end.get().getJSONArray(parts[parts.length - 1]);
-      return ActionResult.success(buildInformation(array, index));
+      return buildResult(array, index);
     } catch (NumberFormatException exception) {
       return ActionResult.failure("json.action.read.array.index.failure.index.wrong.format");
     } catch (Exception exception) {
@@ -68,8 +68,11 @@ public final class JsonReadArrayIndexActionExecutor implements ActionExecutor {
     return Optional.of(json);
   }
 
-  private Map<String, Object> buildInformation(JSONArray array, int index) {
-    return buildInformation(array.get(index).toString());
+  private ActionResult buildResult(JSONArray array, int index) {
+    if (index < 0 || index >= array.length()) {
+      return ActionResult.failure("json.action.read.array.index.failure.out.of.bounds");
+    }
+    return ActionResult.success(buildInformation(array.get(index).toString()));
   }
 
   private Map<String, Object> buildInformation(String entry) {

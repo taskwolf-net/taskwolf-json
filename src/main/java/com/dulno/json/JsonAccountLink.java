@@ -1,9 +1,9 @@
 package com.dulno.json;
 
+import com.dulno.core.account.AccountLink;
 import com.dulno.core.account.AccountLinkEntry;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
-import com.dulno.core.account.AccountLink;
 
 import java.util.List;
 import java.util.UUID;
@@ -34,7 +34,7 @@ public final class JsonAccountLink implements AccountLink {
 
   @Override
   public String description() {
-    return "json.link.description";
+    return "json.account.link.description";
   }
 }
 

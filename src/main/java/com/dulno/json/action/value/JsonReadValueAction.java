@@ -4,7 +4,6 @@ import com.dulno.core.action.Action;
 import com.dulno.core.action.ActionContentDatabaseTable;
 import com.dulno.core.action.ActionInformation;
 import com.dulno.core.database.*;
-import com.dulno.core.workflow.component.ComponentNovelty;
 import com.dulno.core.workflow.component.input.InputComponentDataType;
 import com.dulno.core.workflow.component.input.InputComponentVariable;
 import com.dulno.core.workflow.component.output.OutputComponentVariable;
@@ -44,14 +43,13 @@ public final class JsonReadValueAction implements Action<JsonReadValueActionExec
       .withInputVariable(InputComponentVariable.createRequired("json.action.read.value.input.content.name",
         "jsonContent", "json.action.read.value.input.content.description", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createRequired("json.action.read.value.input.path.name",
-        "jsonPath", "json.action.read.value.input.path.description", InputComponentDataType.TEXT))
+        "jsonPath", "json.action.read.value.input.path.description", "first.second.third", InputComponentDataType.TEXT))
       .withInputVariable(InputComponentVariable.createOptional("json.action.read.value.input.separator.name",
-        "jsonSeparator", "json.action.read.value.input.separator.description", InputComponentDataType.TEXT))
+        "jsonSeparator", "json.action.read.value.input.separator.description", ".", InputComponentDataType.TEXT))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.value.output.value", "jsonValue"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.value.output.content", "jsonContent"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.value.output.path", "jsonPath"))
       .withOutputVariable(OutputComponentVariable.create("json.action.read.value.output.separator", "jsonSeparator"))
-      .withNovelty(ComponentNovelty.NEW)
       .build();
   }
 

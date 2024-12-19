@@ -1,9 +1,5 @@
 package com.dulno.json;
 
-import com.dulno.json.action.array.JsonReadArrayAction;
-import com.dulno.json.action.array.index.JsonReadArrayIndexAction;
-import com.dulno.json.action.value.JsonReadValueAction;
-import com.google.inject.Injector;
 import com.dulno.core.account.AccountLink;
 import com.dulno.core.action.ActionRepository;
 import com.dulno.core.database.DatabaseConnection;
@@ -13,6 +9,10 @@ import com.dulno.core.module.Module;
 import com.dulno.core.module.ModuleDescription;
 import com.dulno.core.module.ModuleInformation;
 import com.dulno.core.module.ModuleLoadPriority;
+import com.dulno.json.action.array.JsonReadArrayAction;
+import com.dulno.json.action.array.index.JsonReadArrayIndexAction;
+import com.dulno.json.action.value.JsonReadValueAction;
+import com.google.inject.Injector;
 
 @ModuleDescription(name = "json", version = "1.0.0-SNAPSHOT",
   priority = ModuleLoadPriority.NEUTRAL)

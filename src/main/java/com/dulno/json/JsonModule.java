@@ -1,7 +1,7 @@
 package com.dulno.json;
 
 import com.dulno.core.account.AccountLink;
-import com.dulno.core.action.ActionRepository;
+import com.dulno.workflow.action.ActionRepository;
 import com.dulno.core.database.DatabaseConnection;
 import com.dulno.core.database.DatabaseKeyspace;
 import com.dulno.core.log.Log;
@@ -12,11 +12,12 @@ import com.dulno.core.module.ModuleLoadPriority;
 import com.dulno.json.action.array.JsonReadArrayAction;
 import com.dulno.json.action.array.index.JsonReadArrayIndexAction;
 import com.dulno.json.action.value.JsonReadValueAction;
+import com.dulno.workflow.integration.Integration;
 import com.google.inject.Injector;
 
 @ModuleDescription(name = "json", version = "1.0.0-SNAPSHOT",
   priority = ModuleLoadPriority.NEUTRAL)
-public final class JsonModule extends Module {
+public final class JsonModule extends Integration {
   private Log log;
   private AccountLink accountLink;
 

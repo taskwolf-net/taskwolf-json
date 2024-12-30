@@ -59,7 +59,9 @@ public final class JsonReadValueAction implements Action<JsonReadValueActionExec
   }
 
   @Override
-  public CompletableFuture<Void> insert(UUID actionId, Map<String, Object> content) {
+  public CompletableFuture<Void> insert(
+    UUID actionId, UUID ownerId, Map<String, Object> content
+  ) {
     var jsonSeparator = content.get("jsonSeparator");
     return contentDatabaseTable.insertContent(actionId, DatabaseRow.of(
       content.get("jsonContent"), content.get("jsonPath"),
@@ -67,8 +69,8 @@ public final class JsonReadValueAction implements Action<JsonReadValueActionExec
   }
 
   @Override
-  public CompletableFuture<Map<String, Object>> findContent(UUID triggerId) {
-    return contentDatabaseTable.findContent(triggerId).thenApply(row ->
+  public CompletableFuture<Map<String, Object>> findContent(UUID actionId) {
+    return contentDatabaseTable.findContent(actionId).thenApply(row ->
       Map.of("jsonContent", row.findCell(1).stringValue(),
         "jsonPath", row.findCell(2).stringValue(),
         "jsonSeparator", row.findCell(3).stringValue()));

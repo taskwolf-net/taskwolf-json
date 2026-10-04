@@ -1,4 +1,4 @@
-package com.dulno.json;
+package net.taskwolf.json;
 
 import com.google.inject.AbstractModule;
 import lombok.RequiredArgsConstructor;

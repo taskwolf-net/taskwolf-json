@@ -1,4 +1,4 @@
-# Dulno - Json
+# Taskwolf - Json
 
 [![CI](https://github.com/taskwolf-net/taskwolf-json/actions/workflows/ci.yml/badge.svg)](https://github.com/taskwolf-net/taskwolf-json/actions/workflows/ci.yml)
 

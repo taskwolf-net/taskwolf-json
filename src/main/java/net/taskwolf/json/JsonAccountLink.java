@@ -1,7 +1,7 @@
-package com.dulno.json;
+package net.taskwolf.json;
 
-import com.dulno.core.account.AccountLink;
-import com.dulno.core.account.AccountLinkEntry;
+import net.taskwolf.core.account.AccountLink;
+import net.taskwolf.core.account.AccountLinkEntry;
 import com.google.common.collect.Lists;
 import lombok.RequiredArgsConstructor;
 

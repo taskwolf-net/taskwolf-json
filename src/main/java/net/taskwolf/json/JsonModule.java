@@ -1,18 +1,18 @@
-package com.dulno.json;
+package net.taskwolf.json;
 
-import com.dulno.core.account.AccountLink;
-import com.dulno.workflow.action.ActionRepository;
-import com.dulno.core.database.DatabaseConnection;
-import com.dulno.core.database.DatabaseKeyspace;
-import com.dulno.core.log.Log;
-import com.dulno.core.module.Module;
-import com.dulno.core.module.ModuleDescription;
-import com.dulno.core.module.ModuleInformation;
-import com.dulno.core.module.ModuleLoadPriority;
-import com.dulno.json.action.array.JsonReadArrayAction;
-import com.dulno.json.action.array.index.JsonReadArrayIndexAction;
-import com.dulno.json.action.value.JsonReadValueAction;
-import com.dulno.workflow.integration.Integration;
+import net.taskwolf.core.account.AccountLink;
+import net.taskwolf.workflow.action.ActionRepository;
+import net.taskwolf.core.database.DatabaseConnection;
+import net.taskwolf.core.database.DatabaseKeyspace;
+import net.taskwolf.core.log.Log;
+import net.taskwolf.core.module.Module;
+import net.taskwolf.core.module.ModuleDescription;
+import net.taskwolf.core.module.ModuleInformation;
+import net.taskwolf.core.module.ModuleLoadPriority;
+import net.taskwolf.json.action.array.JsonReadArrayAction;
+import net.taskwolf.json.action.array.index.JsonReadArrayIndexAction;
+import net.taskwolf.json.action.value.JsonReadValueAction;
+import net.taskwolf.workflow.integration.Integration;
 import com.google.inject.Injector;
 
 @ModuleDescription(name = "json", version = "1.0.0-SNAPSHOT",

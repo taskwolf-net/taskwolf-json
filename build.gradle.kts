@@ -1,6 +1,6 @@
 plugins {
   id("java")
-  id("io.freefair.lombok") version "9.8.0"
+  id("io.freefair.lombok") version "9.8.2"
 }
 
 group = "net.taskwolf"
